@@ -10,6 +10,13 @@ export const findUserById = (uid) => {
  return null;
 };
 
+export const updateUserByUsername = (username, obj) => {
+    const index = users.findIndex((u) => u.username === username);
+    if (index !== -1) {
+        users[index] = {...users[index], ...obj};
+    } 
+    return users[index];
+}
 
 export const findUserByUsername = (username) => {
  const index = users.findIndex((u) => u.username === username);
@@ -17,15 +24,24 @@ export const findUserByUsername = (username) => {
  return null;
 };
 
+export const findUserIdByUsername = (username) => {
+    const index = users.findIndex((u) => u.username === username);
+    if (index !== -1) return users[index];
+    return null;
+};
+
 
 export const findUserByCredentials = (username, password) => {
- const index = users.findIndex.find((u) => u.username === username && u.password === password);
+ const index = users.findIndex((u) => u.username === username && u.password === password);
  if (index !== -1) return users[index];
  return null;
 };
 
 
-export const createUser = (user) => users.push(user);
+export const createUser = (user) => {
+    users.push(user);
+    return user;
+};
 
 
 export const updateUser = (uid, user) => {
