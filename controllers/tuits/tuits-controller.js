@@ -7,11 +7,11 @@ const createTuit = (req, res) => {
   newTuit.likes = 0;
   newTuit.liked = false;
   newTuit.dislikes = 0;
-  newTuit.username = "test";
-  newTuit.image = "bootstrap.png";
-  newTuit.time = "2h";
-  newTuit.topic = "New";
-  newTuit.handle = "@test";
+  // newTuit.username = "test";
+  // newTuit.image = "bootstrap.png";
+  // newTuit.time = "2h";
+  // newTuit.topic = "New";
+  // newTuit.handle = "@test";
   tuits.push(newTuit);
   res.json(newTuit);
 };
