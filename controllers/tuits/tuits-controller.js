@@ -9,6 +9,8 @@ const createTuit = (req, res) => {
   newTuit.dislikes = 0;
   newTuit.username = "test";
   newTuit.image = "bootstrap.png";
+  newTuit.time = "2h";
+  newTuit.topic = "New";
   tuits.push(newTuit);
   res.json(newTuit);
 };
