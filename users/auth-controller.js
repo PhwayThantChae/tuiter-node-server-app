@@ -43,7 +43,7 @@ const AuthController = (app) => {
   };
 
   const update = (req, res) => {
-    const currentUser = req.session["currentUser"];
+    const currentUser = currentUserVar;
     if (!currentUser) {
         res.sendStatus(404);
         return;
@@ -51,6 +51,7 @@ const AuthController = (app) => {
     const updates = req.body;
     let updatedUser = usersDao.updateUserByUsername(currentUser.username, updates);
     req.session["currentUser"] = updatedUser;
+    currentUserVar = updatedUser;
     res.json(updatedUser);
   };
 
