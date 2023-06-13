@@ -10,7 +10,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://a5--magenta-starship-4926eb.netlify.app"],
   })
 );
 app.use(express.json());
