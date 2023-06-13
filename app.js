@@ -16,9 +16,10 @@ app.use(
 app.use(express.json());
 app.use(
   session({
-    secret: "any string",
+    secret: "test123",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: new session.MemoryStore(),
   })
 );
 
