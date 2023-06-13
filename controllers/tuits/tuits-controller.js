@@ -11,6 +11,7 @@ const createTuit = (req, res) => {
   newTuit.image = "bootstrap.png";
   newTuit.time = "2h";
   newTuit.topic = "New";
+  newTuit.handle = "@test";
   tuits.push(newTuit);
   res.json(newTuit);
 };
