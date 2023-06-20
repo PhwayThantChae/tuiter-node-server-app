@@ -1,4 +1,5 @@
 import * as usersDao from "./users-dao.js";
+var currentUserVar;
 
 const AuthController = (app) => {
   const register = async (req, res) => {
@@ -30,13 +31,13 @@ const AuthController = (app) => {
   };  
 
   const profile = (req, res) => {
-    const currentUser = currentUserVar;
+    const currentUser = req.session["currentUser"];
     if (!currentUser) {
       res.sendStatus(404);
       return;
     }
     res.json(currentUser);
-  };
+  }; 
 
   const logout = async (req, res) => {
     req.session.destroy();
@@ -44,7 +45,7 @@ const AuthController = (app) => {
   };
 
   const update = (req, res) => {
-    const currentUser = currentUserVar;
+    const currentUser = req.session["currentUser"];
     if (!currentUser) {
         res.sendStatus(404);
         return;
@@ -52,7 +53,7 @@ const AuthController = (app) => {
     const updates = req.body;
     let updatedUser = usersDao.updateUserByUsername(currentUser.username, updates);
     req.session["currentUser"] = updatedUser;
-    currentUserVar = updatedUser;
+    // currentUserVar = updatedUser;
     res.json(updatedUser);
   };
 
