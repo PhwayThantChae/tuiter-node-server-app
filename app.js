@@ -23,13 +23,17 @@ app.use(
 app.use(express.json());
 app.use(
   session({
-    secret: "test123",
+    secret: "any string",
     resave: false,
+    proxy: true,
     saveUninitialized: false,
-    store: new session.MemoryStore(),
+    cookie: {
+      sameSite: "none",
+      secure: true,
+    },
   })
 );
-mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
+mongoose.connect(CONNECTION_STRING);
 
 tuitsController(app);
 HelloController(app);
