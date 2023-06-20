@@ -5,6 +5,7 @@ import UserController from "./users/users-controller.js";
 import AuthController from "./users/auth-controller.js";
 import tuitsController from "./controllers/tuits/tuits-controller.js";
 import cors from "cors";
+import mongoose from "mongoose";
 
 const app = express();
 app.use(
@@ -22,6 +23,7 @@ app.use(
     store: new session.MemoryStore(),
   })
 );
+mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
 
 tuitsController(app);
 HelloController(app);
